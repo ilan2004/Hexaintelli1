@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import styles from './Navbar.module.css';
 
 import { cn } from "@/lib/utils";
-import { FaTwitter, FaFacebook, FaWhatsapp } from 'react-icons/fa';
 import {
   NavigationMenu,
   NavigationMenuContent,
