@@ -1,18 +1,13 @@
-// tailwind.config.js
-
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class",
+  darkMode: ["class"],
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    // Or if using `src` directory:
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './app/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
   ],
+  prefix: "",
   theme: {
     container: {
       center: true,
@@ -22,15 +17,6 @@ module.exports = {
       },
     },
     extend: {
-      colors: {
-        gray: {
-          '900': '#1f2229',
-        },
-      },
-
-      spacing: {
-        '6': '2rem', // Custom padding size
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -87,18 +73,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    function ({ addBase, theme }) {
-      let allColors = flattenColorPalette(theme("colors"));
-      let newVars = Object.fromEntries(
-        Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-      );
-
-      addBase({
-        ":root": newVars,
-      });
-    },
-    require("tailwindcss-animate"),
-    // Add other plugins as needed
-  ],
-};
+  plugins: [require("tailwindcss-animate")],
+}
